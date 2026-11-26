@@ -28,7 +28,7 @@ export const Projects = () => {
         "A modern social platform where users can connect, share posts, interact with others, and build meaningful online communities.",
       techs: ["React", "TypeScript", "MongoDB", "Node.js", "Tailwind CSS"],
       github: "#",
-      demo: "#",
+      demo: "https://ping-8c1ujua08-liwix24-4281s-projects.vercel.app/",
     },
     {
       number: "04",
@@ -115,25 +115,41 @@ export const Projects = () => {
 
                 {/* Project links */}
                 <div className="flex items-center gap-6 border-t border-white/10 pt-5">
+
                   <a
-                    href={project.github}
+                    href={project.github !== "#" ? project.github : undefined}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-gray-300 hover:text-blue-400 font-medium text-sm transition-colors inline-flex items-center gap-2"
+                    onClick={(e) => {
+                      if (project.github === "#") e.preventDefault();
+                    }}
+                    className={`font-medium text-sm transition-colors inline-flex items-center gap-2 ${
+                      project.github === "#"
+                        ? "text-gray-500 cursor-not-allowed"
+                        : "text-gray-300 hover:text-blue-400"
+                    }`}
                   >
                     <span>GitHub</span>
                     <span>↗</span>
                   </a>
 
                   <a
-                    href={project.demo}
+                    href={project.demo !== "#" ? project.demo : undefined}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-blue-400 hover:text-purple-400 font-medium text-sm transition-colors inline-flex items-center gap-2"
+                    onClick={(e) => {
+                      if (project.demo === "#") e.preventDefault();
+                    }}
+                    className={`font-medium text-sm transition-colors inline-flex items-center gap-2 ${
+                      project.demo === "#"
+                        ? "text-gray-500 cursor-not-allowed"
+                        : "text-blue-400 hover:text-purple-400"
+                    }`}
                   >
                     <span>Live Demo</span>
                     <span>→</span>
                   </a>
+
                 </div>
               </div>
             ))}
